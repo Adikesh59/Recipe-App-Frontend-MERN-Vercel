@@ -3,7 +3,13 @@ import { AppContext } from "./App_Context";
 import axios from "axios";
 
 const App_State = (props) => {
-  const url = "http://localhost:5000/backend";
+  // const url = "http://localhost:5000/backend";
+  //Vercel change 
+// const url = "https://recipe-app-backend-mern-vercel.vercel.app/backend";
+ // ✅ Use environment variable for backend URL
+  const url = `${import.meta.env.VITE_API_URL}/backend`;
+
+  //Vercel end
   //Functions of Recipe App
 
   const [token, setToken] = useState("");
