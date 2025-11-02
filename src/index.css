@@ -1,0 +1,12 @@
+body{
+  background-color: black;
+  color: white;
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+
+}
+
+.nav{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

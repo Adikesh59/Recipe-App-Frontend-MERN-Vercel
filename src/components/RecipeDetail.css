@@ -1,0 +1,180 @@
+/* 🔥 Base Animations */
+.fade-in {
+  animation: fadeIn 1.2s ease-in-out;
+}
+
+.fade-in-up {
+  animation: fadeInUp 1s ease-in-out;
+}
+
+.animate-pop {
+  animation: popIn 0.9s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* 🌄 Recipe Image */
+.recipe-image {
+  overflow: hidden;
+  position: relative;
+  perspective: 1000px;
+}
+
+.recipe-image img {
+  transform-origin: center;
+  transition: transform 6s ease, filter 0.6s ease;
+  filter: brightness(0.9);
+}
+
+.recipe-image:hover img {
+  transform: scale(1.1) rotate3d(1, 1, 0, 5deg);
+  filter: brightness(1.05);
+}
+
+.gradient-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  animation: gradientMove 6s infinite alternate;
+  mix-blend-mode: overlay;
+}
+
+/* 💫 Title Glow */
+.animate-title {
+  animation: glowText 3s ease-in-out infinite alternate;
+  text-shadow: 0 0 25px rgba(0, 255, 128, 0.9),
+               0 0 50px rgba(0, 255, 128, 0.6);
+  letter-spacing: 1px;
+}
+
+/* 🧂 Ingredient Cards — Modern Dark Green */
+.ingredient-card {
+  transition: all 0.4s ease;
+  background: linear-gradient(145deg, #e8f5e9, #d0f0d5);
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  padding: 10px 16px;
+  box-shadow: 0 3px 8px rgba(0, 64, 0, 0.15);
+  font-size: 1.1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* 🟢 Ingredient text — Darker green, super visible */
+.ingredient-card span:first-child {
+  color: #064e3b !important; /* 🌿 Deep dark green */
+  font-weight: 800;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* 🟩 Quantity Badge — Smooth dark gradient */
+.ingredient-card span:last-child {
+  color: #ffffff !important;
+  background: linear-gradient(90deg, #064e3b, #065f46);
+  font-weight: 700;
+  border-radius: 14px;
+  box-shadow: 0 4px 8px rgba(6, 78, 59, 0.5);
+  padding: 6px 16px;
+  font-size: 1rem;
+}
+
+/* 🌈 Hover Effects */
+.ingredient-card:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 10px 25px rgba(6, 78, 59, 0.4);
+  background: linear-gradient(145deg, #d7f7db, #c3f0c9);
+}
+
+.ingredient-card:hover span:first-child {
+  color: #022c22 !important;
+  text-shadow: 0 2px 6px rgba(0, 255, 128, 0.25);
+}
+
+/* 🎇 Back Button */
+.hover-glow {
+  transition: all 0.3s ease;
+  background: linear-gradient(90deg, #065f46, #16a34a);
+  color: #fff !important;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border: none;
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 25px rgba(0, 255, 128, 0.9);
+  transform: translateY(-3px) scale(1.03);
+  background: linear-gradient(90deg, #047857, #16a34a);
+}
+
+/* 🧊 Recipe Card */
+.recipe-detail {
+  backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(0, 128, 64, 0.25);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+  animation: cardFloat 4s ease-in-out infinite alternate;
+}
+
+/* 🌌 Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.8); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes glowText {
+  0% { text-shadow: 0 0 10px rgba(0, 255, 128, 0.4), 0 0 30px rgba(0, 255, 128, 0.4); }
+  100% { text-shadow: 0 0 25px rgba(0, 255, 128, 1), 0 0 60px rgba(0, 255, 128, 0.9); }
+}
+
+@keyframes gradientMove {
+  0% { background-position: left top; }
+  100% { background-position: right bottom; }
+}
+
+@keyframes cardFloat {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-10px); }
+}
+
+/* 🌙 Dark Mode */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #121212;
+  }
+
+  .recipe-detail {
+    background: rgba(30, 30, 30, 0.95);
+    color: #e4e4e4;
+  }
+
+  .ingredient-card {
+    background: rgba(45, 45, 45, 0.95);
+    color: #ffffff !important;
+  }
+
+  .ingredient-card span:first-child {
+    color: #86efac !important; /* lighter green for contrast */
+    text-shadow: 0 1px 3px rgba(0, 255, 128, 0.25);
+  }
+
+  .ingredient-card span:last-child {
+    background: linear-gradient(90deg, #047857, #065f46);
+  }
+
+  .ingredient-card:hover {
+    background: rgba(65, 65, 65, 1);
+    transform: translateY(-6px) scale(1.03);
+  }
+}

@@ -1,0 +1,118 @@
+/* ===== Card container with disco border ===== */
+.recipe-card {
+  width: 100%;
+  max-width: 22rem;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  position: relative;
+}
+
+/* Disco glowing border using pseudo-element */
+.recipe-card::before {
+  content: "";
+  position: absolute;
+  top: -4px; left: -4px; right: -4px; bottom: -4px;
+  border-radius: 24px;
+  padding: 2px;
+  background: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet);
+  background-size: 400% 400%;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  animation: disco 10s linear infinite;
+}
+
+/* Show disco border on hover */
+.recipe-card:hover::before {
+  opacity: 1;
+}
+
+/* Card hover animation */
+.recipe-card:hover {
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+}
+
+/* Disco animation */
+@keyframes disco {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ===== Image styling ===== */
+.card-img-container {
+  position: relative;
+  overflow: hidden;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.recipe-img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  transition: transform 0.6s ease, filter 0.5s ease;
+}
+
+.card-img-container:hover .recipe-img {
+  transform: scale(1.2) rotate(1deg);
+  filter: brightness(0.8);
+}
+
+/* ===== Gradient overlay ===== */
+.overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+  text-align: center;
+  transition: background 0.5s ease;
+}
+
+.overlay-title {
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-shadow: 1px 1px 6px rgba(0,0,0,0.7);
+}
+
+/* ===== Card Body ===== */
+.card-body {
+  padding: 1rem;
+}
+
+.card-text {
+  font-size: 0.95rem;
+  line-height: 1.4;
+  transition: color 0.4s ease;
+}
+
+.recipe-card:hover .card-text {
+  color: #333;
+}
+
+/* ===== Buttons ===== */
+.btn-hover {
+  transition: all 0.4s ease;
+}
+
+.btn-hover:hover {
+  transform: scale(1.1);
+  box-shadow: 0 5px 20px rgba(0,0,0,0.25);
+}
+
+/* ===== Floating effect ===== */
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+  100% { transform: translateY(0); }
+}
+
+.recipe-card {
+  animation: float 6s ease-in-out infinite;
+}

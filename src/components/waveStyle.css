@@ -1,0 +1,16 @@
+.waveLetter {
+  display: inline-block;
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  color: #007bff;
+  animation: wave 1s ease-in-out infinite;
+}
+
+/* Up-down wave animation */
+@keyframes wave {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
