@@ -4,12 +4,16 @@ import axios from "axios";
 
 const App_State = (props) => {
   // const url = "http://localhost:5000/backend";
-  //Vercel change 
+  //Vercel code start 
 // const url = "https://recipe-app-backend-mern-vercel.vercel.app/backend";
- // ✅ Use environment variable for backend URL
-  const url = `${import.meta.env.VITE_API_URL}/backend`;
+const url = import.meta.env.VITE_BACKEND_URL;
+  // const url =
+    // import.meta.env.VITE_BACKEND_URL || "http://localhost:5000/backend";
 
-  //Vercel end
+  //end
+  // ✅ Axios global config
+  axios.defaults.withCredentials = true;
+
   //Functions of Recipe App
 
   const [token, setToken] = useState("");
@@ -22,7 +26,7 @@ const App_State = (props) => {
       const fetchRecipe = async () => {
       const api = await axios.get(`${url}/`, {
         headers: {
-          "Content-Type": "applications/json",
+          "Content-Type": "application/json",
         },
         withCredentials: true,
       });
@@ -70,7 +74,7 @@ const App_State = (props) => {
   //Register
   const register = async (name, gmail, password) => {
     const api = await axios.post(
-      `${url}/register`,
+      `${url}/user/register`,
       {
         name,
         gmail,
@@ -89,7 +93,7 @@ const App_State = (props) => {
   //Login Function
   const login = async (gmail, password) => {
     const api = await axios.post(
-      `${url}/login`,
+      `${url}/user/login`,
       {
         gmail,
         password,
@@ -123,7 +127,7 @@ const App_State = (props) => {
     imgUrl
   ) => {
     const api = await axios.post(
-      `${url}/add`,
+      `${url}/recipe/add`,
       {
         title,
         inst,
@@ -193,7 +197,7 @@ const App_State = (props) => {
 
   //Profile
   const profile = async () => {
-        const api = await axios.get(`${url}/user`, {
+        const api = await axios.get(`${url}/user/profile`, {
       headers: {
         "Content-Type": "application/json",
         Auth:token
